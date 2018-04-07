@@ -1,6 +1,6 @@
 <?php
 
-namespace HL\WPAutoloader;
+namespace DC\WPAutoloader;
 
 class Filters
 {
@@ -13,8 +13,14 @@ class Filters
         add_filter('the_content', [$this, 'autop']);
         add_filter('the_excerpt', [$this, 'autop']);
 
+        // price
+        add_filter('price', [$this, 'price']);
+
         // minify final html
         add_action('wp_loaded', [$this, 'minify_html']);
+
+        // set email type
+        add_filter('wp_mail_content_type', [$this, 'email_type']);
     }
 
     /**
@@ -60,7 +66,28 @@ class Filters
         $content = str_replace('<ol>', '<ol class="list list--ordered">', $content);
         $content = str_replace('<ul>', '<ul class="list list--std">', $content);
         $content = str_replace('<li>', '<li class="list__item">', $content);
+        $content = str_replace('<a', '<a class="link link--std"', $content);
 
         return $content;
+    }
+
+    /**
+     * price filter
+     * @param  int $price
+     * @param  string $currency
+     * @return string
+     */
+    public function price($price)
+    {
+        return number_format($price, 0, '', ' ');
+    }
+
+    /**
+     * set the type of emails
+     * @return string
+     */
+    public function email_type()
+    {
+        return "text/html";
     }
 }
