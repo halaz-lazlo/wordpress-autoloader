@@ -1,0 +1,10 @@
+// scss-lint:disable all
+.fa.vc_element-icon {
+    background-image: none;
+    font-size: 32px;
+    color: map-get($colors, 'alto');
+}
+
+.vc_properties-list textarea {
+    min-height: 200px;
+}

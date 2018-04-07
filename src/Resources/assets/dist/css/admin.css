@@ -1,0 +1,49 @@
+.fa.vc_element-icon {
+  background-image: none;
+  font-size: 32px;
+  color: #dbdbdb; }
+
+.vc_properties-list textarea {
+  min-height: 200px; }
+
+* {
+  box-sizing: border-box; }
+
+body::before {
+  display: none;
+  content: 'xs'; }
+  @media (min-width: 576px) {
+    body::before {
+      content: 'sm'; } }
+  @media (min-width: 768px) {
+    body::before {
+      content: 'md'; } }
+  @media (min-width: 992px) {
+    body::before {
+      content: 'lg'; } }
+
+.form__group {
+  display: block;
+  width: 100%;
+  max-width: 500px; }
+  .form__group + .form__group {
+    margin-top: 15px; }
+
+.form__label {
+  display: block;
+  margin: 0 0 5px;
+  font-weight: 700; }
+
+.form__input {
+  width: 100%; }
+
+.login h1 {
+  margin-bottom: 30px; }
+  .login h1::before {
+    color: #000;
+    font-size: 40px;
+    line-height: 40px;
+    text-transform: uppercase;
+    content: 'wordpress autoloader'; }
+  .login h1 a {
+    display: none; }

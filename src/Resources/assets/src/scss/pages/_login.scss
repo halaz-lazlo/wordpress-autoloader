@@ -1,0 +1,15 @@
+.login h1 {
+    margin-bottom: 30px;
+
+    &::before {
+        color: color('black');
+        font-size: 40px;
+        line-height: 40px;
+        text-transform: uppercase;
+        content: 'wordpress autoloader';
+    }
+
+    a {
+        display: none;
+    }
+}

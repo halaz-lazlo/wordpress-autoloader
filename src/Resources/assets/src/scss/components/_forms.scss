@@ -1,0 +1,21 @@
+.form {
+    &__group {
+        display: block;
+        width: 100%;
+        max-width: 500px;
+
+        + .form__group {
+            margin-top: 15px;
+        }
+    }
+
+    &__label {
+        display: block;
+        margin: 0 0 5px;
+        font-weight: font-weight('bold');
+    }
+
+    &__input {
+        width: 100%;
+    }
+}

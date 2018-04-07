@@ -1,0 +1,47 @@
+// http://chir.ag/projects/name-that-color/
+$colors: (
+    // gray shades
+    'black': #000,
+    'alto': #dbdbdb,
+    'white': #fff,
+
+    // primary shades
+
+    // secondary shades
+);
+$media-queries: (
+    'sm': 576,
+    'md': 768,
+    'lg': 992,
+    'xl': 1200
+);
+
+// Font weights
+// http://www.webtype.com/info/articles/fonts-weights/
+$font-weights: (
+    'light': 300,
+    'normal': 400,
+    'bold': 700
+);
+
+// z-indexes
+// https://www.viget.com/articles/sass-maps-and-z-indexes
+$z-indexes: (
+    'modal': 5,
+    'nav': 4,
+    'default': 1,
+    'overlay': 0,
+    'below': -1,
+    'footer': 2,
+);
+
+$font-1: Helvetica, Arial, sans-serif;
+$font-2: Helvetica, Arial, sans-serif;
+
+$baseline-px: 16px;
+
+$anim-speed: .3s;
+
+$img-path: '../img';
+$svg-path: '../svg';
+$font-path: '../fonts';

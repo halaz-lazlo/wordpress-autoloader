@@ -1,0 +1,27 @@
+@function color($key) {
+    @if map-has-key($colors, $key) {
+      @return map-get($colors, $key);
+    }
+
+    @error "Invalid color key: `#{$key}`.";
+}
+
+@function z-index($key) {
+    @if map-has-key($z-indexes, $key) {
+      @return map-get($z-indexes, $key);
+    }
+
+    @error "Invalid z-index key: `#{$key}`.";
+}
+
+@function font-weight($key) {
+    @if map-has-key($font-weights, $key) {
+      @return map-get($font-weights, $key);
+    }
+
+    @error "Invalid font-weight key: `#{$key}`.";
+}
+
+@function rem($size) {
+    @return decimal-round(strip-unit($size / 16), 3) * 1rem;
+}

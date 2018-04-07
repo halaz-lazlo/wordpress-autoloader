@@ -1,0 +1,22 @@
+{
+    "name": "halaz.lazlo/wordpress-autoloader",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Halász László",
+            "email": "halaz.lazlo@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1"
+    },
+    "autoload": {
+        "psr-0": { "HalazLazlo\\WPAutoloader": "" }
+    },
+    "target-dir": "",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

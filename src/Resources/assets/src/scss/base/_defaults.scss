@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    &::before {
+        display: none;
+        content: 'xs';
+
+        @include respond-to('sm') {
+            content: 'sm';
+        }
+
+        @include respond-to('md') {
+            content: 'md';
+        }
+
+        @include respond-to('lg') {
+            content: 'lg';
+        }
+    }
+}

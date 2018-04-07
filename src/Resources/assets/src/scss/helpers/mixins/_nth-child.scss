@@ -1,0 +1,92 @@
+// https://paulund.co.uk/nth-child-sass-mixins
+
+// First Child
+@mixin first-child() {
+    &:first-of-type {
+        @content
+    }
+}
+
+// Last Child
+@mixin last-child() {
+    &:last-of-type {
+        @content
+    }
+}
+
+// Evens
+@mixin even() {
+    &:nth-child(even) {
+        @content
+    }
+}
+
+// Odds
+@mixin odd() {
+    &:nth-child(odd) {
+        @content
+    }
+}
+
+// Select The First nth Elements
+@mixin first($num) {
+
+    @if $num == 1 {
+        &:first-child {
+            @content;
+        }
+    } @else {
+        &:nth-child(-n + #{$num}) {
+            @content;
+        }
+    }
+}
+
+// Select The Last nth Elements
+@mixin last($num) {
+    &:nth-last-child(-n + #{$num}) {
+        @content;
+    }
+}
+
+// Select After nth Elements
+@mixin after($num) {
+    &:nth-child(n+#{$num + 1}) {
+        @content
+    }
+}
+
+// Select From Last Elements
+@mixin from-end($num) {
+    &:nth-last-child(#{$num}) {
+        @content
+    }
+}
+
+// Select Between Two Elements
+@mixin between($first, $last) {
+    &:nth-child(n+#{$first}):nth-child(-n+#{$last}) {
+        @content
+    }
+}
+
+// Select All But One
+@mixin all-but($num) {
+    &:not(:nth-child(#{$num})) {
+        @content
+    }
+}
+
+// Select Every nth
+@mixin each($num) {
+    &:nth-child(#{$num}n) {
+        @content
+    }
+}
+
+// Select Every nth
+@mixin each-next($num) {
+    &:nth-child(#{$num}n + 1) {
+        @content
+    }
+}
