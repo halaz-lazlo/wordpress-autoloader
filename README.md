@@ -29,7 +29,7 @@ $parameters = [
 #!php
 $parameters = [
     'theme_settings' => [
-        'menu_label' => __('Theme Settings', 'dc'),
+        'menu_label' => __('Theme Settings', 'wpa'),
         'form_fields' => [
             'address' => [
                 'label'       => 'Address',
@@ -128,11 +128,11 @@ class ContactForm extends AbstractForm implements iForm
 {
     public function __construct()
     {
-        $emptyMsg = __("Can't be blank", 'dc');
+        $emptyMsg = __("Can't be blank", 'wpa');
 
         $this->options = [
             'menu_page' => [
-                'label' => __('Contact messages', 'dc'),
+                'label' => __('Contact messages', 'wpa'),
                 'icon' => 'dashicons-email-alt'
             ],
             'form' => [
@@ -142,7 +142,7 @@ class ContactForm extends AbstractForm implements iForm
                 'fields' => [
                     'name' => [
                         'type' => 'text',
-                        'label' => __('Your name', 'dc').' *',
+                        'label' => __('Your name', 'wpa').' *',
                         'validate' => [
                             'not_blank' => $emptyMsg
                         ]
@@ -198,7 +198,7 @@ class ContactForm extends AbstractForm implements iForm
 'fields' => [
     'name' => [
         'type' => 'text',
-        'label' => __('Your name', 'dc').' *',
+        'label' => __('Your name', 'wpa').' *',
         'validate' => [
             'not_blank' => $emptyMsg
         ]
@@ -216,10 +216,10 @@ class ContactForm extends AbstractForm implements iForm
 'fields' => [
     'email' => [
         'type' => 'email',
-        'label' => __('Your Email', 'dc').' *',
+        'label' => __('Your Email', 'wpa').' *',
         'validate' => [
             'not_blank' => __('Cant be blank'),
-            'email' => __('Please provide a valid email address', 'dc')
+            'email' => __('Please provide a valid email address', 'wpa')
         ]
     ],
 ]
@@ -234,7 +234,7 @@ class ContactForm extends AbstractForm implements iForm
 'fields' => [
     'email' => [
         'type' => 'tel',
-        'label' => __('Your Phone', 'dc').' *',
+        'label' => __('Your Phone', 'wpa').' *',
         'validate' => [
             'not_blank' => __('Cant be blank')
         ]
@@ -263,7 +263,7 @@ class ContactForm extends AbstractForm implements iForm
 'fields' => [
     'name' => [
         'type' => 'text',
-        'label' => __('Your name', 'dc').' *',
+        'label' => __('Your name', 'wpa').' *',
         'validate' => [
             'not_blank' => $emptyMsg,
             'email' => $emptyMsg
@@ -291,7 +291,7 @@ class ContactForm extends AbstractForm implements iForm
 
 <?php $formUtil->widget($form, 'name'); ?>
 
-<button class="btn btn--std"><?php echo __('Send', 'dc'); ?></button>
+<button class="btn btn--std"><?php echo __('Send', 'wpa'); ?></button>
 
 <?php $formUtil->end($form); ?>
 ```
@@ -345,8 +345,8 @@ class ArticlePostType extends AbstractPostType
             'post_type' => 'article',
             'post_type_features' => [
                 'labels' => [
-                    'name'          => __('Articles', 'dc'),
-                    'singular_name' => __('Article', 'dc')
+                    'name'          => __('Articles', 'wpa'),
+                    'singular_name' => __('Article', 'wpa')
                 ],
                 'public'               => true,
                 'has_archive'          => false,
@@ -367,7 +367,7 @@ class ArticlePostType extends AbstractPostType
             ],
             'customs_box' => [
                 'id'       => 'article_settings',
-                'title'    => __('Article settings', 'dc'),
+                'title'    => __('Article settings', 'wpa'),
                 'page'     => 'article'
             ],
             'customs_form' => [
@@ -375,7 +375,7 @@ class ArticlePostType extends AbstractPostType
                 'fields' => [
                     'city' => [
                         'type' => 'text',
-                        'label' => __('City', 'dc')
+                        'label' => __('City', 'wpa')
                     ]
                 ]
             ]
@@ -397,7 +397,7 @@ To define a language textdomain, add a config param:
 // src/Resources/config.php
 
 $parameters = [
-    'language_textdomain' => 'dc',
+    'language_textdomain' => 'wpa',
 ]
 ```
 
@@ -443,7 +443,7 @@ msgstr "To"
 
 // front-page.php
 
-echo __('From', 'dc');
+echo __('From', 'wpa');
 
 // Result: To
 ```
