@@ -1,6 +1,6 @@
 <?php
 
-namespace DC\WPAutoloader;
+namespace HL\WPAutoloader;
 
 class Filters
 {
