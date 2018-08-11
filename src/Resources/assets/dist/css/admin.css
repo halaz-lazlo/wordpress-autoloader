@@ -37,6 +37,24 @@ body::before {
 .form__input {
   width: 100%; }
 
+.input-img__thumb-img {
+  max-width: 100%;
+  max-height: 120px;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.input-img__buttons {
+  margin-top: 10px; }
+
+.input-img--has-image .input-img__button--set {
+  display: none !important; }
+
+.input-img__button--remove, .input-img__button--change {
+  display: none !important; }
+  .input-img--has-image .input-img__button--remove, .input-img--has-image .input-img__button--change {
+    display: inline-block !important; }
+
 .login h1 {
   margin-bottom: 30px; }
   .login h1::before {

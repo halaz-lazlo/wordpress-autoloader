@@ -31,19 +31,24 @@ class Assets
         $cssPath = $this->basePath.'/css/admin.min.css';
         $cssUri = $this->baseUri.'/css/admin.min.css';
 
-        if (!file_exists($cssPath)) {
-            echo "Nincs ilyen file: ". $cssPath;
-            exit;
-        } else {
-            wp_register_style(
-                'wp-autoloader-styles-admin',
-                $cssUri,
-                [],
-                filemtime($cssPath),
-                'all'
-            );
-            wp_enqueue_style('wp-autoloader-styles-admin');
-        }
+        $jsPath = $this->basePath.'/js/admin.js';
+        $jsUri = $this->baseUri.'/js/admin.js';
+
+        wp_enqueue_style(
+            'wpa_styles',
+            $cssUri,
+            [],
+            filemtime($cssPath),
+            'all'
+        );
+
+        wp_enqueue_script(
+            'app_script_vendors',
+            $jsUri,
+            [],
+            filemtime($jsPath),
+            'all'
+        );
     }
 
     public function wpaAssets()

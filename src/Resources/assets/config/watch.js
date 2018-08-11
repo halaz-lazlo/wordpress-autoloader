@@ -4,9 +4,7 @@ module.exports = {
 			'<%= config.src %>/js/**/*.js',
 		],
 		tasks: [
-			'eslint',
-			'browserify',
-			'uglify'
+			'browserify'
 		],
 		options: {
 			spawn: false
@@ -17,12 +15,9 @@ module.exports = {
 			'<%= config.src %>/scss/**/*'
 		],
 		tasks: [
-			'scsslint',
 			'sass',
 			'postcss',
-			'cmq',
-			// 'px_to_rem',
-			// 'imageEmbed'
+			'cmq'
 		],
 		options: {
 			spawn: false

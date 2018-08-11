@@ -14,20 +14,12 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', [
-        // 'clean',
-        // 'copy',
-        // 'eslint',
-        // 'browserify',
-        // 'uglify',
-        'scsslint',
-        'imagemin',
-        // 'svgstore',
+        'clean',
+
+        'browserify',
+
         'sass',
         'postcss',
-        'cmq',
-        // 'px_to_rem',
-        // 'chmod',
-        // 'po2mo'
-        // 'imageEmbed'
+        'cmq'
     ]);
 }

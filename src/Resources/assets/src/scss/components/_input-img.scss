@@ -1,0 +1,32 @@
+.input-img {
+    &__thumb {
+        &-img {
+            max-width: 100%;
+            max-height: 120px;
+            margin: 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+
+    &__buttons {
+        margin-top: 10px;
+    }
+
+    &__button {
+        &--set {
+            .input-img--has-image & {
+                display: none !important;
+            }
+        }
+
+        &--remove,
+        &--change {
+            display: none !important;
+
+            .input-img--has-image & {
+                display: inline-block !important;
+            }
+        }
+    }
+}

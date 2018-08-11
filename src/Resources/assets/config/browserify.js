@@ -6,7 +6,6 @@ module.exports = {
            ]
         },
         files: {
-          '<%= config.dist %>/js/main.js': ['<%= config.src %>/js/main.js'],
           '<%= config.dist %>/js/admin.js': ['<%= config.src %>/js/admin.js']
         }
     }
