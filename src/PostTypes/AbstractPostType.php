@@ -8,11 +8,9 @@ class AbstractPostType
 
     public function init()
     {
-        if (isset($this->options['customs_box'])) {
-            add_action('admin_menu', array($this, 'showEditCustomsBox'));
-        }
-
         if (isset($this->options['customs_form'])) {
+            add_action('add_meta_boxes', array($this, 'showEditCustomsBox'));
+
             add_action('save_post', array($this, 'saveCustoms'));
         }
 
@@ -30,15 +28,15 @@ class AbstractPostType
      */
     public function showEditCustomsBox()
     {
-        $optionsDefault = [
-            'id'       => 'page_settings',
-            'title'    => __('Page settings', 'wpa'),
-            'page'     => 'page',
+        $postType = $this->options['post_type'];
+
+        $options = [
+            'id'       => "{$postType}_settings",
+            'title'    => __('Settings', 'wpa'),
+            'page'     => $postType,
             'context'  => 'normal',
             'priority' => 'high'
         ];
-
-        $options = array_merge($optionsDefault, $this->options['customs_box']);
 
         add_meta_box(
             $options['id'],
@@ -72,6 +70,7 @@ class AbstractPostType
     public function saveCustoms($post_id)
     {
         global $app;
+
         $formUtil = $app->getUtil('form');
         $form = $this->options['customs_form'];
 
