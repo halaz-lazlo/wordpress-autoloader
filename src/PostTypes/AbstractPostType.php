@@ -9,6 +9,8 @@ class AbstractPostType
     public function init()
     {
         if (isset($this->options['customs_form'])) {
+            $this->options['customs_form']['id'] = $this->options['post_type'];
+
             add_action('add_meta_boxes', array($this, 'showEditCustomsBox'));
 
             add_action('save_post', array($this, 'saveCustoms'));
