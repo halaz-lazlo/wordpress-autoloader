@@ -6,12 +6,6 @@
         'multiple' => isset($input['multiple']) ? $input['multiple'] : false,
         'value' => isset($input['value']) ? $input['value'] : null,
     ];
-
-    $selectedKey = array_search($select['value'], $select['choices']);
-
-    if ($selectedKey) {
-        $select['selected_key'] = $selectedKey;
-    }
 ?>
 
 <select
@@ -27,10 +21,17 @@
     <?php endif ?>>
 
     <!-- choices -->
-    <?php if ($select['choices']): ?>
-        <?php foreach ($select['choices'] as $choice_key => $choice_value): ?>
-            <option value="<?php echo $choice_value; ?>" class="<?php echo sanitize_title($choice_value); ?>" <?php if (isset($select['selected_key']) && $select['selected_key'] == $choice_key): ?>selected<?php endif ?>>
-                <?php echo $choice_value; ?>
+    <?php if (isset($select['choices'])): ?>
+        <?php foreach ($select['choices'] as $choice_value => $choice_label): ?>
+            <?php
+                $isSelected = isset($select['value']) && $select['value'] == $choice_value;
+            ?>
+
+            <option
+                value="<?php echo $choice_value; ?>"
+                class="<?php echo sanitize_title($choice_label); ?>"
+                <?php if ($isSelected): ?>selected<?php endif ?>>
+                <?php echo $choice_label; ?>
             </option>
         <?php endforeach ?>
     <?php endif ?>

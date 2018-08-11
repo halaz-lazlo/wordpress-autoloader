@@ -104,18 +104,6 @@ class Shortcodes
                 'description'               => __('Place content elements inside the inner column', 'wpa'),
                 'params'                    => [
                     [
-                        'heading'     => __('Align content', 'wpa'),
-                        'group'       => __('Options', 'wpa'),
-                        'param_name'  => 'align',
-                        'type'        => 'dropdown',
-                        'description' => __('The align of content if necessary', 'wpa'),
-                        'value'       => [
-                            __('None (left)', 'wpa') => 'left',
-                            __('Center', 'wpa')      => 'center',
-                            __('Right', 'wpa')       => 'right'
-                        ]
-                    ],
-                    [
                         'type'        => 'dropdown',
                         'heading'     => __('Width', 'js_composer'),
                         'param_name'  => 'width',
