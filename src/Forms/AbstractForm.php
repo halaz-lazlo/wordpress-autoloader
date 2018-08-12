@@ -49,6 +49,34 @@ abstract class AbstractForm implements iForm
 
     public function list_entries()
     {
-        echo "Function not implemented";
+        global $app, $wpdb;
+
+        $pagenum = isset( $_GET['pagenum'] ) ? absint( $_GET['pagenum'] ) : 1;
+        $limit   = 20;
+        $offset  = ($pagenum - 1) * $limit;
+
+        $results = $wpdb->get_results(
+            "SELECT * FROM contact_messages ORDER BY id DESC LIMIT $offset, $limit",
+            ARRAY_A
+        );
+
+        $resultTotalCount = $wpdb->get_var("SELECT COUNT(`id`) FROM contact_messages");
+        $total = ceil( $resultTotalCount / $limit );
+
+        $pagination = paginate_links( array(
+            'base' => add_query_arg( 'pagenum', '%#%' ),
+            'format' => '',
+            'prev_text' => __('&laquo;', get_template()),
+            'next_text' => __('&raquo;', get_template()),
+            'total' => $total,
+            'current' => $pagenum
+        ) );
+
+        $app->render('admin/forms/list-entries.php', [
+            'title' => $this->options['menu_page']['label'],
+            'form'      => $this->options['form'],
+            'results'   => $results,
+            'pagination'=> $pagination
+        ]);
     }
 }
