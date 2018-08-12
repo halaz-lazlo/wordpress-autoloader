@@ -77,7 +77,7 @@ class App
 
     public function getForm($form)
     {
-        if (!array_key_exists($form, $this->forms)) {
+        if (!isset($this->forms) || !array_key_exists($form, $this->forms)) {
             echo 'Form unavailable: '.$form;
             die();
         }
