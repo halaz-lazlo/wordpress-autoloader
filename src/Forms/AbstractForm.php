@@ -56,11 +56,11 @@ abstract class AbstractForm implements iForm
         $offset  = ($pagenum - 1) * $limit;
 
         $results = $wpdb->get_results(
-            "SELECT * FROM contact_messages ORDER BY id DESC LIMIT $offset, $limit",
+            "SELECT * FROM {$this->options['form']['id']} ORDER BY id DESC LIMIT $offset, $limit",
             ARRAY_A
         );
 
-        $resultTotalCount = $wpdb->get_var("SELECT COUNT(`id`) FROM contact_messages");
+        $resultTotalCount = $wpdb->get_var("SELECT COUNT(`id`) FROM {$this->options['form']['id']}");
         $total = ceil( $resultTotalCount / $limit );
 
         $pagination = paginate_links( array(
