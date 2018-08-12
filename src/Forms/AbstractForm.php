@@ -43,7 +43,44 @@ abstract class AbstractForm implements iForm
 
     public function submit()
     {
-        echo "Function not implemented";
+        global $app;
+        $formUtil = $app->getUtil('form');
+
+        $ret = [
+            'success' => true,
+            'errors' => [],
+        ];
+
+        // fill form with values
+        $formUtil->handleForm($this->options['form']);
+
+        // validate
+        $ret['errors'] = $formUtil->validate($this->options['form']);
+
+        if (sizeof($ret['errors']) > 0) {
+            $ret['success'] = false;
+        } else {
+            $result = $formUtil->getEntityToSave($this->options['form']);
+
+            // send mail
+            $email = [
+                'title' => $this->options['menu_page']['label'],
+                'result' => $result,
+                'form' => $this->options['form'],
+            ];
+
+            $message = $app->render('emails/form-entries.php', $email, true);
+            $email = WP_DEBUG ? 'halaz.lazlo@gmail.com' : get_option('email');
+
+            wp_mail($email, __('New contact email', get_template()), $message);
+
+            // save message to db
+            global $wpdb, $app;
+
+            $wpdb->insert($this->options['form']['id'], $result);
+        }
+
+        echo json_encode($ret);
         exit;
     }
 

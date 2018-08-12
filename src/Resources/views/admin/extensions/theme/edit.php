@@ -1,6 +1,6 @@
 <div class="wrap">
     <h1>
-        Theme settings
+        <?php echo __("Theme settings"); ?>
     </h1>
 
     <form method="post" action="options.php">
