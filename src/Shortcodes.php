@@ -76,7 +76,6 @@ class Shortcodes
                 'weight'                  => 1000,
                 'show_settings_on_create' => false,
                 'description'             => __('Place content elements inside the inner row', 'wpa'),
-                'js_view'                 => 'VcRowView',
                 'params'                  => [
                     [
                         'type'        => 'checkbox',
