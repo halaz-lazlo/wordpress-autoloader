@@ -22,37 +22,8 @@ class Shortcodes
                 'show_settings_on_create' => false,
                 'category'                => __('Layout', 'wpa'),
                 'description'             => __('Wrapper for elements', 'wpa'),
-                'params'                  => [
-                    [
-                        'type'       => 'dropdown',
-                        'heading'    => __('Background', 'wpa'),
-                        'param_name' => 'bg',
-                        'value'      => [
-                            __('None', 'wpa')  => '',
-                            __('White', 'wpa') => 'white'
-                        ],
-                        'description' => __('The background of the section', 'wpa'),
-                    ],
-                    [
-                        'type'        => 'checkbox',
-                        'heading'     => __('Remove padding on top?', 'wpa'),
-                        'param_name'  => 'rm_pt',
-                        'description' => __('Is padded from top', 'wpa'),
-                        'value'       => [
-                            __('Yes', 'wpa') => '1'
-                        ],
-                    ],
-                    [
-                        'type'        => 'checkbox',
-                        'heading'     => __('Remove padding on bottom?', 'wpa'),
-                        'param_name'  => 'rm_pb',
-                        'description' => __('Is padded from bottom', 'wpa'),
-                        'value'       => [
-                            __('Yes', 'wpa') => '1'
-                        ],
-                    ],
-                ],
-                'js_view' => 'VcRowView',
+                'show_settings_on_create' => false,
+                'js_view' => 'VcColumnView',
             ],
 
             // section inner
@@ -63,30 +34,20 @@ class Shortcodes
                 'is_container'    => true,
                 'content_element' => false,
                 'description'     => __( 'Place content elements inside the column', 'js_composer' ),
-                'js_view'         => 'VcColumnView',
+                'js_view'         => 'VcRowView',
             ],
 
             // row
             [
                 'name'                    => __('Row', 'wpa'), //Inner Row
                 'base'                    => 'vc_row_inner',
-                'content_element'         => false,
                 'is_container'            => true,
+                'content_element'         => false,
                 'icon'                    => 'icon-wpb-row',
                 'weight'                  => 1000,
-                'show_settings_on_create' => false,
+                'js_view'                 => 'VcRowView',
                 'description'             => __('Place content elements inside the inner row', 'wpa'),
-                'params'                  => [
-                    [
-                        'type'        => 'checkbox',
-                        'heading'     => __('Some padding on the top?', 'wpa'),
-                        'param_name'  => 'padding_top',
-                        'description' => __('Is padded from top with default.', 'wpa'),
-                        'value'       => [
-                            __('Yes, please', 'wpa') => 'yes'
-                        ],
-                    ],
-                ],
+                'show_settings_on_create' => false
             ],
 
             // column inner
@@ -97,7 +58,6 @@ class Shortcodes
                 'class'                     => '',
                 'wrapper_class'             => '',
                 'controls'                  => 'full',
-                'allowed_container_element' => false,
                 'content_element'           => false,
                 'is_container'              => true,
                 'description'               => __('Place content elements inside the inner column', 'wpa'),

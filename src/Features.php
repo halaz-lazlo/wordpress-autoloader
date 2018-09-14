@@ -73,6 +73,12 @@ class Features {
             $this->options = array_merge($this->options, $options);
         }
 
+        // i18n
+        load_theme_textdomain(
+            $this->options['language_textdomain'],
+            BASE_PATH.'/src/Resources/translations'
+        );
+
         // build admin menu
         add_action('admin_menu', [$this, 'build_admin_menu']);
 
@@ -87,12 +93,6 @@ class Features {
 
         // allow thumbs
         add_theme_support('post-thumbnails');
-
-        // i18n
-        load_theme_textdomain(
-            $this->options['language_textdomain'],
-            BASE_PATH.'/src/Resources/translations'
-        );
 
         // build metaboxes
         add_action('admin_menu', [$this, 'build_metaboxes']);
