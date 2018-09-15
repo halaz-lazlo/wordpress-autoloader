@@ -34,7 +34,7 @@ class Shortcodes
                 'is_container'    => true,
                 'content_element' => false,
                 'description'     => __( 'Place content elements inside the column', 'js_composer' ),
-                'js_view'         => 'VcRowView',
+                'js_view'         => 'VcColumnView',
             ],
 
             // row
