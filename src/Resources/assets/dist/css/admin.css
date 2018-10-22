@@ -24,8 +24,7 @@ body::before {
 
 .form__group {
   display: block;
-  width: 100%;
-  max-width: 500px; }
+  width: 100%; }
   .form__group + .form__group {
     margin-top: 15px; }
 
@@ -54,6 +53,47 @@ body::before {
   display: none !important; }
   .input-img--has-image .input-img__button--remove, .input-img--has-image .input-img__button--change {
     display: inline-block !important; }
+
+.input-imgs__thumbs {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-align: center;
+      align-items: center;
+  width: 100%;
+  margin: -10px; }
+
+.input-imgs__thumb {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 10px;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .input-imgs__thumb-img {
+    max-width: 100px;
+    max-height: 100px; }
+  .input-imgs__thumb-remove {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    cursor: pointer; }
+  .input-imgs__thumb:hover .input-imgs__thumb-remove {
+    display: -ms-flexbox;
+    display: flex; }
+
+.input-imgs__footer {
+  margin-top: 15px; }
 
 .login h1 {
   margin-bottom: 30px; }
