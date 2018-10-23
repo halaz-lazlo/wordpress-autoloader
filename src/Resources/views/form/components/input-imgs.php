@@ -12,7 +12,7 @@
                 <div data-id="<?php echo $imgId; ?>" class="input-imgs__thumb">
                     <img
                         class="input-imgs__thumb-img"
-                        src="<?php echo wp_get_attachment_image_src($imgId, 'sm')[0] ?>">
+                        src="<?php echo wp_get_attachment_image_src($imgId, 'sm')[0]; ?>">
                     <div class="input-imgs__thumb-remove">X</div>
                 </div>
             <?php endforeach; ?>
