@@ -1,6 +1,9 @@
+const sass = require('node-sass');
+
 module.exports = {
   dev: {
     options: {
+      implementation: sass,
       sourceMap: false,
       includePaths: [
         'node_modules'
@@ -16,6 +19,7 @@ module.exports = {
   },
   dist: {
     options: {
+      implementation: sass,
       sourceMap: false,
       outputStyle: 'compressed',
       includePaths: [

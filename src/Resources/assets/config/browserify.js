@@ -2,7 +2,7 @@ module.exports = {
     dist: {
         options: {
            transform: [
-              ["babelify", { "presets": ["es2015"] }]
+              ["babelify", { "presets": ["env"] }]
            ]
         },
         files: {

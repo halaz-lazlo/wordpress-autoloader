@@ -1,11 +1,10 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-'use strict';
+"use strict";
 
 jQuery(document).ready(function ($) {
   // img
   $('.input-img .input-img__button').on('click', function (e) {
     e.preventDefault();
-
     var frame = wp.media({
       title: 'Select image',
       button: {
@@ -13,102 +12,80 @@ jQuery(document).ready(function ($) {
       },
       multiple: false
     });
-
     var wrap = $(this).parents('.input-img');
     var input = wrap.find('.input-img__val');
     var thumb = wrap.find('.input-img__thumb');
-
     frame.on('select', function () {
-      var img = frame.state().get('selection').first().toJSON();
+      var img = frame.state().get('selection').first().toJSON(); // show buttons
 
-      // show buttons
-      wrap.addClass('input-img--has-image');
+      wrap.addClass('input-img--has-image'); // set value
 
-      // set value
-      input.val(img.id);
+      input.val(img.id); // add thumb
 
-      // add thumb
       thumb.html('<img class="input-img__thumb-img" src="' + img.url + '" />');
     });
-
     frame.open();
   });
-
   $('.input-img .input-img__button--remove').on('click', function (e) {
     var wrap = $(this).parents('.input-img');
     var input = wrap.find('.input-img__val');
     var thumb = wrap.find('.input-img__thumb');
-
     wrap.removeClass('input-img--has-image');
     input.val('');
     thumb.html('');
-  });
+  }); // imgs
 
-  // imgs
   $('.input-imgs__btn').on('click', function (e) {
     e.preventDefault();
-
     var btn = $(this);
     var wrap = $(this).parents('.input-imgs');
     var input = wrap.find('.input-imgs__val');
     var thumbs = wrap.find('.input-imgs__thumbs');
-
     var frame = wp.media({
       title: 'Select image',
       button: {
         text: 'Select'
       },
       multiple: 'add'
-    });
+    }); // open
 
-    // open
     frame.on('open', function () {
       var selection = frame.state().get('selection');
       var imgIds = input.val(); // the id of the image
+
       if (imgIds) {
         var imgIds = imgIds.split(',');
-
         imgIds.forEach(function (imgId) {
           selection.add(wp.media.attachment(imgId));
         });
       }
-    });
+    }); // select
 
-    // select
     frame.on('select', function () {
       var selection = frame.state().get('selection');
-      var imgIds = [];
+      var imgIds = []; // add thumbs
 
-      // add thumbs
       thumbs.html('');
       selection.map(function (attachment) {
-        attachment = attachment.toJSON();
+        attachment = attachment.toJSON(); // append img
 
-        // append img
-        thumbs.append($('<div data-id="' + attachment.id + '" class="input-imgs__thumb"><img class="input-imgs__thumb-img" src="' + attachment.url + '" /><div class="input-imgs__thumb-remove">X</div></div>'));
+        thumbs.append($('<div data-id="' + attachment.id + '" class="input-imgs__thumb"><img class="input-imgs__thumb-img" src="' + attachment.url + '" /><div class="input-imgs__thumb-remove">X</div></div>')); // save id
 
-        // save id
         imgIds.push(attachment.id);
-      });
+      }); // set value
 
-      // set value
       input.val(imgIds.join(','));
-    });
-
-    // remove
+    }); // remove
 
     frame.open();
   });
-
   $('.input-imgs__thumb-remove').on('click', function (e) {
     var wrap = $(this).parents('.input-imgs');
     var input = wrap.find('.input-imgs__val');
     var img = $(this).parents('.input-imgs__thumb');
     var id = img.data('id').toString();
-
     var ids = input.val().split(',');
     ids.splice(ids.indexOf(id), 1);
-
     input.val(ids.join(','));
     img.remove();
   });

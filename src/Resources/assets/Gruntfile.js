@@ -19,7 +19,6 @@ module.exports = function (grunt) {
         'browserify',
 
         'sass',
-        'postcss',
-        'cmq'
+        'postcss'
     ]);
 }
