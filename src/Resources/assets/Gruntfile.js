@@ -18,6 +18,8 @@ module.exports = function (grunt) {
 
         'browserify',
 
+        'po2mo',
+
         'sass',
         'postcss'
     ]);

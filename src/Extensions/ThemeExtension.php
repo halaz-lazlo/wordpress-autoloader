@@ -6,8 +6,11 @@ class ThemeExtension
 {
     private $options;
 
+    private $textdomain;
+
     public function __construct($options)
     {
+        $this->textdomain = $options['language_textdomain'];
         $this->options = $options;
     }
 
@@ -29,7 +32,7 @@ class ThemeExtension
         $options = $this->options;
 
         add_menu_page(
-            $options['menu_label'],
+            __($options['menu_label'], $this->textdomain),
             $options['menu_label'],
             'manage_options',
             'theme-settings',
