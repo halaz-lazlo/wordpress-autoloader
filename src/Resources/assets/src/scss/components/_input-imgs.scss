@@ -10,10 +10,10 @@
     &__thumb {
         display: inline-block;
         position: relative;
-        margin: 0;
-        padding: 10px;
+        margin: 10px;
         background-repeat: no-repeat;
         background-size: cover;
+        cursor: grab;
 
         &-img {
             max-width: 100px;

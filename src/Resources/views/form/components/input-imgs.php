@@ -6,7 +6,7 @@
         value="<?php echo $input['value']; ?>" />
 
 
-    <div class="input-imgs__thumbs">
+    <div id="input-imgs__thumbs" class="input-imgs__thumbs">
         <?php if($input['value']) :  ?>
             <?php foreach(explode(',', $input['value']) as $imgId) : ?>
                 <div data-id="<?php echo $imgId; ?>" class="input-imgs__thumb">

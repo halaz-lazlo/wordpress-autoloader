@@ -1,14 +1,17 @@
 module.exports = {
-	scripts: {
-		files: [
-			'<%= config.src %>/js/**/*.js',
-		],
-		tasks: [
-			'browserify'
-		],
-		options: {
-			spawn: false
-		}
+	ts: {
+			files: [
+				'<%= config.src %>/ts/**/*',
+			],
+			tasks: [
+				'ts',
+				'browserify',
+				'concat',
+				'clean:caches'
+			],
+			options: {
+				spawn: false
+			}
 	},
 	css: {
 		files: [
@@ -16,8 +19,7 @@ module.exports = {
 		],
 		tasks: [
 			'sass',
-			'postcss',
-			'cmq'
+			'postcss'
 		],
 		options: {
 			spawn: false
