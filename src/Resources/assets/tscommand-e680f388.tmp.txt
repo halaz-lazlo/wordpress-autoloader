@@ -1,1 +1,0 @@
-src/ts/index.ts --removeComments --rootDir src/ts --target ES2015 --module commonjs --outDir dist/ts-compiled
