@@ -74,12 +74,14 @@ export class InputImgs {
 
     // sorting
     const el = document.getElementById('input-imgs__thumbs');
-    Sortable.create(el, {
-      onEnd: (e) => {
-        this.refreshList($(e.target));
-      },
-      animation: 100
-    });
+    if (el) {
+      Sortable.create(el, {
+        onEnd: (e) => {
+          this.refreshList($(e.target));
+        },
+        animation: 100
+      });
+    }
   }
 
   private refreshList(target) {

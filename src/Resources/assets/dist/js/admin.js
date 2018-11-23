@@ -65,12 +65,14 @@ var InputImgs = function () {
                 img.remove();
             });
             var el = document.getElementById('input-imgs__thumbs');
-            Sortable.create(el, {
-                onEnd: function onEnd(e) {
-                    _this.refreshList($(e.target));
-                },
-                animation: 100
-            });
+            if (el) {
+                Sortable.create(el, {
+                    onEnd: function onEnd(e) {
+                        _this.refreshList($(e.target));
+                    },
+                    animation: 100
+                });
+            }
         }
     }, {
         key: "refreshList",
