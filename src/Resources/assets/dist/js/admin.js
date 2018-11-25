@@ -54,7 +54,7 @@ var InputImgs = function () {
                 });
                 frame.open();
             });
-            $('.input-imgs__thumb-remove').on('click', function (e) {
+            $('body').delegate('.input-imgs__thumb-remove', 'click', function (e) {
                 var wrap = $(this).parents('.input-imgs');
                 var input = wrap.find('.input-imgs__val');
                 var img = $(this).parents('.input-imgs__thumb');

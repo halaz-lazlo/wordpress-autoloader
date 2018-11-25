@@ -70,19 +70,19 @@ body::before {
 .input-imgs__thumb {
   display: inline-block;
   position: relative;
-  margin: 10px;
+  width: 25%;
+  padding: 10px;
   background-repeat: no-repeat;
   background-size: cover;
   cursor: -webkit-grab;
   cursor: grab; }
   .input-imgs__thumb-img {
-    max-width: 100px;
-    max-height: 100px; }
+    max-width: 100%; }
   .input-imgs__thumb-remove {
     display: none;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    right: 0;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -91,10 +91,14 @@ body::before {
             justify-content: center;
     width: 30px;
     height: 30px;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    background: #fff;
+    border-radius: 50%;
+    background: #0073aa;
+    color: #fff;
+    font-weight: 700;
     cursor: pointer; }
+    .input-imgs__thumb-remove:hover {
+      background: #c00;
+      color: #fff; }
   .input-imgs__thumb:hover .input-imgs__thumb-remove {
     display: -webkit-box;
     display: -ms-flexbox;
