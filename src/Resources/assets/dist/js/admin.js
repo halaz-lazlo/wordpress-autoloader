@@ -18,10 +18,10 @@ var InputImgs = function () {
         value: function bindEventlisteners() {
             var _this = this;
 
-            $('.input-imgs__btn').on('click', function (e) {
+            jQuery('.input-imgs__btn').on('click', function (e) {
                 e.preventDefault();
-                var btn = $(this);
-                var wrap = $(this).parents('.input-imgs');
+                var btn = jQuery(this);
+                var wrap = jQuery(this).parents('.input-imgs');
                 var input = wrap.find('.input-imgs__val');
                 var thumbs = wrap.find('.input-imgs__thumbs');
                 var frame = wp.media({
@@ -47,17 +47,17 @@ var InputImgs = function () {
                     thumbs.html('');
                     selection.map(function (attachment) {
                         attachment = attachment.toJSON();
-                        thumbs.append($('<div data-id="' + attachment.id + '" class="input-imgs__thumb"><img class="input-imgs__thumb-img" src="' + attachment.url + '" /><div class="input-imgs__thumb-remove">X</div></div>'));
+                        thumbs.append(jQuery('<div data-id="' + attachment.id + '" class="input-imgs__thumb"><img class="input-imgs__thumb-img" src="' + attachment.url + '" /><div class="input-imgs__thumb-remove">X</div></div>'));
                         imgIds.push(attachment.id);
                     });
                     input.val(imgIds.join(','));
                 });
                 frame.open();
             });
-            $('body').delegate('.input-imgs__thumb-remove', 'click', function (e) {
-                var wrap = $(this).parents('.input-imgs');
+            jQuery('body').delegate('.input-imgs__thumb-remove', 'click', function (e) {
+                var wrap = jQuery(this).parents('.input-imgs');
                 var input = wrap.find('.input-imgs__val');
-                var img = $(this).parents('.input-imgs__thumb');
+                var img = jQuery(this).parents('.input-imgs__thumb');
                 var id = img.data('id').toString();
                 var ids = input.val().split(',');
                 ids.splice(ids.indexOf(id), 1);
@@ -68,7 +68,7 @@ var InputImgs = function () {
             if (el) {
                 Sortable.create(el, {
                     onEnd: function onEnd(e) {
-                        _this.refreshList($(e.target));
+                        _this.refreshList(jQuery(e.target));
                     },
                     animation: 100
                 });
@@ -79,7 +79,7 @@ var InputImgs = function () {
         value: function refreshList(target) {
             var ids = [];
             target.find('.input-imgs__thumb').each(function (i, item) {
-                ids.push($(item).data('id'));
+                ids.push(jQuery(item).data('id'));
             });
             target.parents('.input-imgs').find('.input-imgs__val').val(ids.join(','));
         }

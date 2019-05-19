@@ -1,14 +1,14 @@
-declare const $;
+declare const jQuery;
 declare const wp;
 declare const Sortable;
 
 export class InputImgs {
   bindEventlisteners() {
-    $('.input-imgs__btn').on('click', function(e) {
+    jQuery('.input-imgs__btn').on('click', function(e) {
       e.preventDefault();
 
-      var btn = $(this);
-      var wrap = $(this).parents('.input-imgs');
+      var btn = jQuery(this);
+      var wrap = jQuery(this).parents('.input-imgs');
       var input = wrap.find('.input-imgs__val');
       var thumbs = wrap.find('.input-imgs__thumbs');
 
@@ -44,7 +44,7 @@ export class InputImgs {
           attachment = attachment.toJSON();
 
           // append img
-          thumbs.append($('<div data-id="'+attachment.id+'" class="input-imgs__thumb"><img class="input-imgs__thumb-img" src="' + attachment.url + '" /><div class="input-imgs__thumb-remove">X</div></div>'));
+          thumbs.append(jQuery('<div data-id="'+attachment.id+'" class="input-imgs__thumb"><img class="input-imgs__thumb-img" src="' + attachment.url + '" /><div class="input-imgs__thumb-remove">X</div></div>'));
 
           // save id
           imgIds.push(attachment.id);
@@ -59,10 +59,10 @@ export class InputImgs {
       frame.open();
     });
 
-    $('body').delegate('.input-imgs__thumb-remove', 'click', function (e) {
-      var wrap = $(this).parents('.input-imgs');
+    jQuery('body').delegate('.input-imgs__thumb-remove', 'click', function (e) {
+      var wrap = jQuery(this).parents('.input-imgs');
       var input = wrap.find('.input-imgs__val');
-      var img = $(this).parents('.input-imgs__thumb');
+      var img = jQuery(this).parents('.input-imgs__thumb');
       var id = img.data('id').toString();
 
       var ids = input.val().split(',');
@@ -77,7 +77,7 @@ export class InputImgs {
     if (el) {
       Sortable.create(el, {
         onEnd: (e) => {
-          this.refreshList($(e.target));
+          this.refreshList(jQuery(e.target));
         },
         animation: 100
       });
@@ -87,7 +87,7 @@ export class InputImgs {
   private refreshList(target) {
     const ids = [];
     target.find('.input-imgs__thumb').each((i, item) => {
-      ids.push($(item).data('id'));
+      ids.push(jQuery(item).data('id'));
     });
 
     target.parents('.input-imgs').find('.input-imgs__val').val(ids.join(','));
