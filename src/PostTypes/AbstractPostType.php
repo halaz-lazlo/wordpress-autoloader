@@ -8,6 +8,25 @@ class AbstractPostType
 
     public function init()
     {
+        $this->initCustomsForm();
+        $this->registerPostType();
+    }
+
+    public function registerPostType()
+    {
+        if (isset($this->options['post_type'])) {
+            if (isset($this->options['post_type_features'])) {
+                register_post_type($this->options['post_type'], $this->options['post_type_features']);
+            } else {
+                echo 'set the post type features';
+            }
+        }
+    }
+
+    public function initCustomsForm()
+    {
+        $this->validateForCustomsForm();
+
         if (isset($this->options['customs_form'])) {
             $this->options['customs_form']['id'] = $this->options['post_type'];
 
@@ -15,12 +34,35 @@ class AbstractPostType
 
             add_action('save_post', array($this, 'saveCustoms'));
         }
+    }
 
-        if (isset($this->options['post_type'])) {
-            if (isset($this->options['post_type_features'])) {
-                register_post_type($this->options['post_type'], $this->options['post_type_features']);
-            } else {
-                echo 'set the post type features';
+    public function validateForCustomsForm()
+    {
+        if (!isset($this->options['post_type'])) {
+            throw new \Exception('post_type is mandatory');
+        }
+
+        if (!isset($this->options['customs_form'])) {
+            throw new \Exception('customs_form is mandatory');
+        }
+    }
+
+    public function addTranslatedCustomFieldsFor(array $customFieldsForTranslate)
+    {
+        $languages = get_option('qtranslate_enabled_languages');
+        if ($languages) {
+            foreach ($customFieldsForTranslate as $customFieldForTranslate) {
+                foreach ($this->options['customs_form']['fields'] as $key => $field) {
+                    if ($key === $customFieldForTranslate) {
+                        foreach ($languages as $language) {
+                            $fieldOptions = $this->options['customs_form']['fields'][$customFieldForTranslate];
+                            $fieldOptions['label'] .= ' ('.$language.')';
+                            $this->options['customs_form']['fields'][$customFieldForTranslate.'_'.$language] = $fieldOptions;
+                        }
+
+                        unset($this->options['customs_form']['fields'][$customFieldForTranslate]);
+                    }
+                }
             }
         }
     }
