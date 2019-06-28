@@ -2,24 +2,22 @@
 
 namespace HL\WPAutoloader\Repositories;
 
+use HL\WPAutoloader\Media\Image;
+
 class ImageRepository
 {
-    public function findById($id, $attrs = ['src', 'alt'], $size = 'full')
+    /**
+     * @return Image
+     */
+    public function findById($id, $size = Image::SIZE_FULL, $attrs = ['src', 'alt'])
     {
-        $img = [];
+        $src = in_array('src', $attrs) ? $this->getSrc($id, $size) : null;
+        $alt = in_array('alt', $attrs) ? $this->getAlt($id) : null;
 
-        if (in_array('src', $attrs)) {
-            $img['src'] = $this->getSrc($id, $size);
-        }
-
-        if (in_array('alt', $attrs)) {
-            $img['alt'] = $this->getAlt($id);
-        }
-
-        return $img;
+        return new Image($src, $alt);
     }
 
-    public function getSrc($id, $size = 'full')
+    public function getSrc($id, $size = Image::SIZE_FULL)
     {
         return wp_get_attachment_image_src($id, $size)[0];
     }
