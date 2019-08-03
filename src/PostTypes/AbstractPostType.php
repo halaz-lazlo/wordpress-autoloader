@@ -9,6 +9,7 @@ class AbstractPostType
     public function init()
     {
         $this->initCustomsForm();
+        $this->addTranslations();
         $this->registerPostType();
     }
 
@@ -47,21 +48,19 @@ class AbstractPostType
         }
     }
 
-    public function addTranslatedCustomFieldsFor(array $customFieldsForTranslate)
+    private function addTranslations()
     {
         $languages = get_option('qtranslate_enabled_languages');
         if ($languages) {
-            foreach ($customFieldsForTranslate as $customFieldForTranslate) {
-                foreach ($this->options['customs_form']['fields'] as $key => $field) {
-                    if ($key === $customFieldForTranslate) {
-                        foreach ($languages as $language) {
-                            $fieldOptions = $this->options['customs_form']['fields'][$customFieldForTranslate];
-                            $fieldOptions['label'] .= ' ('.$language.')';
-                            $this->options['customs_form']['fields'][$customFieldForTranslate.'_'.$language] = $fieldOptions;
-                        }
-
-                        unset($this->options['customs_form']['fields'][$customFieldForTranslate]);
+            foreach ($this->options['customs_form']['fields'] as $key => $field) {
+                if (isset($field['is_translatable']) && $field['is_translatable']) {
+                    foreach ($languages as $language) {
+                        $fieldOptions = $this->options['customs_form']['fields'][$key];
+                        $fieldOptions['label'] .= ' ('.$language.')';
+                        $this->options['customs_form']['fields'][$key.'_'.$language] = $fieldOptions;
                     }
+
+                    unset($this->options['customs_form']['fields'][$key]);
                 }
             }
         }
