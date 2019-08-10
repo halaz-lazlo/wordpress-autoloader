@@ -1,6 +1,6 @@
 <?php
 
-namespace HL\WPAutoloader\Forms;
+namespace HL\WPAutoloader\Form;
 
 use HL\WPAutoloader\Forms\iForm;
 

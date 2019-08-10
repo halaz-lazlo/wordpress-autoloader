@@ -1,6 +1,6 @@
 <?php
 
-namespace HL\WPAutoloader\Utils;
+namespace HL\WPAutoloader\Util;
 
 class TemplateUtil
 {

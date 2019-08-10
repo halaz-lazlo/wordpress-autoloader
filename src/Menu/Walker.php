@@ -1,8 +1,8 @@
 <?php
 
-namespace HL\WPAutoloader\Utils;
+namespace HL\WPAutoloader\Menu;
 
-class MenuUtil extends \Walker {
+class Walker extends \Walker {
 
     public $tree_type = 'page';
     private $baseUrl;

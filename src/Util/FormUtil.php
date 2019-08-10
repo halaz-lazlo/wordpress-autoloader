@@ -1,8 +1,8 @@
 <?php
 
-namespace HL\WPAutoloader\Utils;
+namespace HL\WPAutoloader\Util;
 
-use HL\WPAutoloader\Utils\TemplateUtil;
+use HL\WPAutoloader\Util\TemplateUtil;
 
 class FormUtil
 {

@@ -13,10 +13,12 @@ use HL\WPAutoloader\Shortcodes;
 // extensions
 use HL\WPAutoloader\Extensions\ThemeExtension;
 
+// menu
+use HL\WPAutoloader\Menu\Walker;
+
 // utils
-use HL\WPAutoloader\Utils\FormUtil;
-use HL\WPAutoloader\Utils\TemplateUtil;
-use HL\WPAutoloader\Utils\MenuUtil;
+use HL\WPAutoloader\Util\FormUtil;
+use HL\WPAutoloader\Util\TemplateUtil;
 
 class App
 {
@@ -57,7 +59,6 @@ class App
         // init utils
         $this->utils['template'] = new TemplateUtil();
         $this->utils['form'] = new FormUtil();
-        $this->utils['menu'] = new MenuUtil();
 
         global $app;
         $app = $this;
