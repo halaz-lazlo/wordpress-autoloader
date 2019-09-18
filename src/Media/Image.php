@@ -9,12 +9,14 @@ class Image
 
     private $src;
     private $alt;
+    private $title;
 
 
-    public function __construct($src, $alt)
+    public function __construct($src, $alt, $title)
     {
         $this->src = $src;
         $this->alt = $alt;
+        $this->title = $title;
     }
 
     public function getSrc()
@@ -25,5 +27,10 @@ class Image
     public function getAlt()
     {
         return $this->alt;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
     }
 }
