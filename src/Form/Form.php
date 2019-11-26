@@ -42,7 +42,6 @@ class Form
         }
 
         foreach ($this->fields as $i => $field) {
-            $id = $this->getFieldId($field);
             $field->setId($this->getFieldId($field));
         }
     }
@@ -62,6 +61,8 @@ class Form
 
     public function addField(Field $field)
     {
+        $field->setId($this->getFieldId($field));
+
         $this->fields[] = $field;
     }
 

@@ -87,12 +87,9 @@ class CustomPostType
     public function saveCustoms($post_id)
     {
         foreach ($this->customsForm->getFields() as $field) {
-            echo $field->getId() . '<br>';
             if (isset($_POST[$field->getId()])) {
                 $value = $_POST[$field->getId()];
                 $value = is_array($value) ? $value[0] : $value;
-
-                echo $field->getId() . ' ' . $value . '<br>';
 
                 update_post_meta($post_id, $field->getId(), $value);
             } else {
